@@ -1,0 +1,53 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  MyApp({Key? key}) : super(key: key);
+  final List<String> imagelist = [
+    "https://img9.irna.ir/d/r2/2019/07/16/4/156480254.jpg",
+    "https://www.boursenews.ir/files/fa/news/1399/3/17/195744_674.jpg",
+    "https://jamejamonline.ir/files/fa/news/1399/9/28/198037_449.jpg",
+    "https://media.khabaronline.ir/d/2021/01/03/0/5514163.jpeg",
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("Alice"),
+        ),
+        body: Center(
+          child: CarouselSlider(
+            options: CarouselOptions(
+              enlargeCenterPage: true,
+              enableInfiniteScroll: false,
+              autoPlay: true,
+            ),
+            items: imagelist
+                .map((e) => ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          Image.network(
+                            e,
+                            width: 1050,
+                            height: 350,
+                            fit: BoxFit.cover,
+                          )
+                        ],
+                      ),
+                    ))
+                .toList(),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+https://www.youtube.com/watch?v=pygpnS6GXnU 
+=> slider
